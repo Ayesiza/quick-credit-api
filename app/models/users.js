@@ -5,7 +5,6 @@ export const users = [
     lastName: 'kabasinguzi',
     password:'kabasinguzi22',
     address:'wakiso',
-    status:'unverified',
     isAdmin:true},
     
    {id:2,
@@ -14,7 +13,6 @@ export const users = [
     lastName: 'muhangi',
     password:'muhangi22',
     address:'hoima',
-    status:'unverified',
     isAdmin:false},
 
     {id:3,
@@ -23,6 +21,5 @@ export const users = [
     lastName: 'zariat',
     password:'kobusinge22',
     address:'kampala',
-    status:'unverified',
     isAdmin:true}
 ]
