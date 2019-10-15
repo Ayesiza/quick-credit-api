@@ -12,6 +12,7 @@ export const  getToken = (req, res, next) => {
     req.token = bearerToken;
     next();
   }
+  
 export const verifyUserToken = (req, res, next)=> {
     jwt.verify(req.token, SECRETE_KEY, (err, user) => {
       if (err) return res.status(403).json({ error: 403, message: err.message });
@@ -30,7 +31,6 @@ export const userIsAdmin=(req,res,next) => {
   if (req.user.isAdmin = false) return res.status(403).send({error:403,message:'for only Admin'})
   next()
 }
-
 
 export const validation = (req, res, next) => {
 
