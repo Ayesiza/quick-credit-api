@@ -6,13 +6,13 @@ export const signUpUser = (req,res) =>{
     const { email,firstName, lastName,  password, address, isAdmin} = req.body;
     const id = users.length + 1;
     const user = {id, email, firstName, lastName,  password, address, isAdmin}
-    const token = jwt.sign({id, email,firstName, lastName,  password, address, isAdmin}, 'gfgggre67hfrggrhje', { expiresIn: '24hr' });
+    const token = jwt.sign({user}, 'gfgggre67hfrggrhje', { expiresIn: '24hr' });
         users.push(user);
         user.token = token;
         res.status(201).send({status:201,message:'User created successfully',user});
   };
   
-
+ 
 export const userLogin = (req,res) => {
     const user = users.find(user => user.email === req.body.email)
     if (!user) return res.status(404).send({status:404,message:'user of the given id not found'})

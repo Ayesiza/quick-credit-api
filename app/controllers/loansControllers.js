@@ -20,5 +20,16 @@ export const getLoanApplication= (req,res) => {
       loanApps.push(loanApp)
       res.status(201).send({status:201,message:'Your application has been received',loanApp});
   }
+ export const viewLoanRepayments = (req,res) =>{
+     res.status(200).send({status:200, repayments})
+
+ }
  
+ export const createRepayment = (req,res) => {
+    const {loanId,createdOn,amount,monthlyInstallment,paidAmount,balance}= req.body
+    const id =repayments.length +1;
+    const repayment = {id,loanId,createdOn,amount,monthlyInstallment,paidAmount,balance}
+    repayments.push(repayment)
+    res.status(201).send({status:201,repayment})
+ }
   
