@@ -1,5 +1,4 @@
 import {loans} from '../models/loans'
-import { loanApps} from '../models/loans'
 import { repayments} from '../models/loans'
 
 export  const specificLoan = (req,res) => {
@@ -12,14 +11,35 @@ export const getLoanApplication= (req,res) => {
     res.status(200).send({status:200, loans});
 };
 
-  export const createLoanApplication = (req,res ) =>{
-      const { firstName,lastName,email,tenor,amount,paymentInstallment,balance,interest}= req.body
-      const loanId =loanApps.length +1;
-      const status = 'pending'
-      const loanApp = {loanId,firstName,lastName,email,tenor,amount,paymentInstallment,status,balance,interest}
-      loanApps.push(loanApp)
-      res.status(201).send({status:201,message:'Your application has been received',loanApp});
-  }
+
+  export const loanApplication = (req,res ) =>{
+    const { amount, tenor } = req.body;
+    const { firstName, lastName, email } = req.user;
+  
+      const loanId = loans.length + 1;
+      const interest = 0.05 * Number(amount).toFixed(2);
+      const paymentInstallment = (Number(amount + interest) / tenor).toFixed(2);
+      const balance = Number(amount + interest).toFixed(2);
+      const repaid = false;
+      const status = 'pending';
+      const createdAt = new Date().toLocaleString();
+  
+      // Loan data returned to user
+      const loanApplied = {loanId,firstName,lastName,email,amount,tenor,interest, paymentInstallment,balance, repaid, createdAt,status};
+  
+      // Loan data stored in data structure
+      const id = loanApplied.loanId;
+      const user = req.user.email;
+      const newLoan = {id, user,amount,interest, paymentInstallment, balance,tenor,repaid, createdAt,status};
+      const currentLoan = loans.find(loan => loan.user === req.user.email);
+      if (currentLoan) {
+        return res.status(409).send({status: 409,error: 'You have a current unrepaid loan',});
+      }
+  
+      loans.push(newLoan);
+      return res.status(201).send({status: 201,data: loanApplied,});
+     }
+    
  export const viewLoanRepayments = (req,res) =>{
      res.status(200).send({status:200, repayments})
 

@@ -71,38 +71,3 @@ export const repayments = [
     }
   
 ]
-
-export const loanApps = [
-{loanId:1,
-firstName:'maira',
-lastName:'kabasinguzi',
-email:'maira@gmail.com',
-tenor: 10,
-amount: 1000,
-paymentInstallment:100,
-status:'pending',
-balance: 900,
-interest: 10},
-{loanId:2,
-    firstName:'ameer',
-    lastName:'muhangi',
-    email:'ameer@gmail.com',
-    tenor: 10,
-    amount: 1000,
-    paymentInstallment:100,
-    status:'pending',
-    balance: 900,
-    interest: 10},
-    
-{loanId:3,
-firstName:'zariat',
-lastName:'kobusinge',
-email:'zariat@gmail.com',
-tenor: 10,
-amount: 1000,
-paymentInstallment:100,
-status:'pending',
-balance: 900,
-interest: 10}, 
-
-    ]
