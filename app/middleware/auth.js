@@ -1,4 +1,5 @@
 import { users } from '../models/users';
+import {loans} from '../models/loans'
 import jwt from 'jsonwebtoken'
 const SECRETE_KEY = 'gfgggre67hfrggrhje'
 import Joi from 'joi';
@@ -27,10 +28,11 @@ export const checkIfUserExist =(req,res,next) => {
 
 }
 
-export const userIsAdmin=(req,res,next) => {
+export const userIsAdmin = (req,res,next) => {
   if (req.user.isAdmin = false) return res.status(403).send({error:403,message:'for only Admin'})
   next()
 }
+
 
 export const validation = (req, res, next) => {
 
