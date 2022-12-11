@@ -24,7 +24,7 @@
   "homepage": "https://github.com/Ayesiza/quick-credit-api#readme",
   "dependencies": {
     "esm": "^3.2.25",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1"
   },
